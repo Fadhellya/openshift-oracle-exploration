@@ -36,7 +36,7 @@ Berikut adalah topologi sistem yang digunakan:
 
 #### e. Konfigurasi phpMyAdmin
 - Deploy pod phpMyAdmin.
-- Buat **Service Account** agar phpMyAdmin memiliki akses root ke MySQL.
+- Buat **Service Account** agar phpMyAdmin memiliki akses root untuk inisiasi pod.
 - Lakukan **RoleBinding** untuk memberikan izin yang sesuai.
 - Buat **Service** dan **Route** untuk phpMyAdmin agar dapat diakses.
 
