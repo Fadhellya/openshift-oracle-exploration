@@ -1,0 +1,41 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: crud-test
+  namespace: app-news
+  labels:
+    app: crud-test
+    app.kubernetes.io/part-of: crud-test-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crud-test
+  template:
+    metadata:
+      labels:
+        app: crud-test
+        deployment: crud-test
+    spec:
+      containers:
+        - name: crud-test
+          image: 'image-registry.openshift-image-registry.svc:5000/app-news/crud-test@sha256:ddaafb95647aae3deaf4a34679f51a65aad235cd7d9d41b8525867b959b29190'
+          ports:
+            - containerPort: 80
+              protocol: TCP
+            - containerPort: 8080
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: crud-env
+            - secretRef:
+                name: crud-env
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

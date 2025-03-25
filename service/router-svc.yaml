@@ -1,0 +1,37 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: routerdb
+  namespace: app-news
+  labels:
+    app: routerdb
+spec:
+  ports:
+    - name: db-port-6446
+      protocol: TCP
+      port: 6446
+      targetPort: 6446
+    - name: db-port-6447
+      protocol: TCP
+      port: 6447
+      targetPort: 6447
+    - name: db-port-6448
+      protocol: TCP
+      port: 6448
+      targetPort: 6448
+    - name: db-port-6449
+      protocol: TCP
+      port: 6449
+      targetPort: 6449
+    - name: db-port-6450
+      protocol: TCP
+      port: 6450
+      targetPort: 6450
+    - name: secure-port-8443
+      protocol: TCP
+      port: 8443
+      targetPort: 8443
+  selector:
+    app: routerdb
+    deployment: routerdb
+  type: ClusterIP

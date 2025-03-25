@@ -1,0 +1,10 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: crud-env
+  namespace: app-news
+immutable: false
+data:
+  DB_HOST: routerdb
+  DB_NAME: akademik
+  DB_PORT: '6446'

@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: crud-test
+  namespace: app-news
+  labels:
+    app: crud-test
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+    - name: http-alt
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: crud-test
+    deployment: crud-test
+  type: ClusterIP

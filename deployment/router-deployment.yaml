@@ -1,0 +1,59 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: routerdb
+  namespace: app-news
+  labels:
+    app: routerdb
+    app.kubernetes.io/part-of: crud-test-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: routerdb
+  template:
+    metadata:
+      labels:
+        app: routerdb
+        deployment: routerdb
+    spec:
+      containers:
+        - name: routerdb
+          image: 'image-registry.openshift-image-registry.svc:5000/app-news/routerdb@sha256:9de261bb90eefba673924244aa8729746427fa2470d462ca3a006345f71b74bf'
+          ports:
+            - containerPort: 6446
+              protocol: TCP
+            - containerPort: 6447
+              protocol: TCP
+            - containerPort: 6448
+              protocol: TCP
+            - containerPort: 6449
+              protocol: TCP
+            - containerPort: 6450
+              protocol: TCP
+            - containerPort: 8443
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: router-env
+            - secretRef:
+                name: router-env
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      hostAliases:
+        - ip: 10.100.24.144
+          hostnames:
+            - db1
+        - ip: 10.100.24.145
+          hostnames:
+            - db2
+        - ip: 10.100.24.146
+          hostnames:
+            - db3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

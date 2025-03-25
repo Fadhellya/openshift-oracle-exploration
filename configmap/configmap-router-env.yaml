@@ -1,0 +1,10 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: router-env
+  namespace: app-news
+immutable: false
+data:
+  MYSQL_HOST: 10.100.24.144
+  MYSQL_INNODB_CLUSTER_MEMBERS: '3'
+  MYSQL_PORT: '3306'

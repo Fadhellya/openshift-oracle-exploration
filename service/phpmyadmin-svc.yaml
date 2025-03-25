@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: phpmyadmin
+  namespace: app-news
+  labels:
+    app: phpmyadmin
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+    - name: http-alt
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: phpmyadmin
+    deployment: phpmyadmin
+  type: ClusterIP

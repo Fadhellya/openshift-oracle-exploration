@@ -1,0 +1,10 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: phpmyadmin-env
+  namespace: app-news
+immutable: false
+data:
+  APACHE_PORT: '8080'
+  PMA_HOST: routerdb
+  PMA_PORT: '6446'
