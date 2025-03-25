@@ -6,7 +6,7 @@ Dokumen ini menjelaskan langkah-langkah dalam melakukan deployment MySQL Cluster
 ## Topologi
 Berikut adalah topologi sistem yang digunakan:
 
-![Topologi MySQL Cluster](image.png)
+![Topologi MySQL Cluster](topology.png)
 
 ## Alur Pengerjaan
 
