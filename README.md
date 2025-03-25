@@ -3,6 +3,11 @@
 ## Ringkasan
 Dokumen ini menjelaskan langkah-langkah dalam melakukan deployment MySQL Cluster di atas vSphere serta integrasi dengan OpenShift. Implementasi ini mencakup pembuatan layanan eksternal, konfigurasi MySQL Router, serta koneksi dengan aplikasi dan phpMyAdmin.
 
+## Topologi
+Berikut adalah topologi sistem yang digunakan:
+
+![Topologi MySQL Cluster](topology.png)
+
 ## Alur Pengerjaan
 
 ### 1. Setup MySQL Cluster di vSphere
